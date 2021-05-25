@@ -1,5 +1,4 @@
 from Models.item_Model import ItemModel
-from db import db
 from flask_restful import Resource
 from Models.store_model import StoreModel
 
@@ -9,7 +8,7 @@ class Store(Resource):
         if store:
             return store.json(),200
         
-        return {"Message":"The store message is not found"}
+        return {"Message":"The store message is not found"},404
 
     def post(self,name):
         if StoreModel.find_by_item_name(name):
